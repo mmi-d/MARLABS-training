@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Part One</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
+
+      body {
+        margin: 0;
+        font-family: "New Tegomin", serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        margin-top: 300px;
+      }
+
+      .btn {
+        background-color: #111;
+        color: #fff;
+        margin: 15px 0;
+        padding: 10px 20px;
+        border: 0;
+        border-radius: 15px;
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Checked & Uncheck to Control Read-Only Property</h1>
+
+    <div class="input">
+      <input type="checkbox" id="text" onclick="setReadOnly()" />
+      <label for="text">Click for Read-Only</label>
+      <input
+        type="text"
+        id="read-write"
+        placeholder="Text-Box is Editable..."
+      />
+    </div>
+
+    <input type="submit" class="btn" id="output" onclick="showOnScreen()" />
+
+    <h2 class="screenOP" id="screenOP"></h2>
+
+    <script>
+      const screenOutput = document.getElementById("screenOP");
+      const tick = document.getElementById("text");
+      function setReadOnly() {
+        if (tick.checked) {
+          document.getElementById("read-write").readOnly = true;
+          document.getElementById("read-write").placeholder = "Read-Only";
+        } else {
+          document.getElementById("read-write").readOnly = false;
+          document.getElementById("read-write").placeholder =
+            "Text-Box is Editable...";
+        }
+      }
+      function showOnScreen() {
+        output = document.getElementById("read-write");
+        if (output.value.trim()) {
+          screenOutput.innerHTML = `Your response was recorded as ${output.value}.`;
+        }
+      }
+    </script>
+  </body>
+</html>

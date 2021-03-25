@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Part Two</title>
+    </head>
+<body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    
+    <div class="container">
+        Choose a Meal:<br>
+        <input type="radio" id="meal" name="gr1" value="burger">Burger</input><br>
+        <input type="radio" id="meal" name="gr1" value="sandwich">Sandwich</input><br>
+        <input type="radio" id="meal" name="gr1" value="taco">Taco</input><br>
+        
+        Choose a Drink:<br>
+        <input type="radio" id="drink" name="gr2" value="soda">Soda</input><br>
+        <input type="radio" id="drink" name="gr2" value="milk-shake">Milk-Shake</input><br>
+        <input type="radio" id="drink" name="gr2" value="iced-water">Iced-Water</input><br>
+    </div>
+
+    <hr>
+    <input type="button" onclick="getValues()" value="CLICK">
+    <br>
+    <label id="result"></label>
+    <script>
+        function getValues(){
+            const chosenMeal = document.getElementsByName('gr1');
+            const chosenDrink = document.getElementsByName('gr2');
+            chosenMeal.forEach(meal => {
+                chosenDrink.forEach(drink => {
+                    if (meal.checked && drink.checked) {
+                        document.getElementById("result").innerHTML = `You have chosen a ${meal.value} and ${drink.value}.`;                        
+                    }
+                })
+
+            });
+        }
+    </script>
+</body>
+</html>
