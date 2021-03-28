@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Two - Display Filze Size</title>
+  </head>
+  <body>
+    <form>
+      <input type="file" multiple id="files" />
+      <output id="list"></output>
+      <script>
+        function formatBytes(a, b = 2) {
+          if (0 === a) return "0 Bytes";
+          const c = 0 > b ? 0 : b,
+            d = Math.floor(Math.log(a) / Math.log(1024));
+          return (
+            parseFloat((a / Math.pow(1024, d)).toFixed(c)) +
+            " " +
+            [
+              "Bytes, ",
+              "KB, ",
+              "MB, ",
+              "GB, ",
+              "TB, ",
+              "PB, ",
+              "EB, ",
+              "ZB, ",
+              "YB, ",
+            ][d]
+          );
+        }
+
+        function handleFileSelected(evt) {
+          // console.log(evt);
+          var files = evt.target.files;
+          var output = [];
+          for (let i = 0; i < files.length; i++) {
+            f = files[i];
+            output.push(
+              `<li><strong>`,
+              f.name,
+              `</strong>(`,
+              f.type || "n//a",
+              ") -",
+              formatBytes(f.size),
+              "last modified:",
+              f.lastModifiedDate
+                ? f.lastModifiedDate.toLocaleDateString()
+                : "n//a",
+              "</li>"
+            );
+          }
+          document.getElementById("list").innerHTML =
+            "<ul>" + output.join(" ") + "</ul>";
+        }
+        document
+          .getElementById("files")
+          .addEventListener("change", handleFileSelected, false);
+      </script>
+    </form>
+  </body>
+</html>
