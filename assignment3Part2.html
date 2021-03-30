@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .drop-area {
+            width: 100px;
+            height: 25px;
+            border: 1px solid #999;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            background-color: blueviolet;
+            color: #fff;
+        }
+
+        #thumbnail img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" style="display:none" id="upload-image" multiple="multiple"></input>
+    <div id="upload" class="drop-area">
+        Upload File(s)
+    </div>
+    <div id="thumbnail"></div>
+    <script>
+            const fileDiv = document.getElementById("upload");
+            const fileInput = document.getElementById("upload-image");
+            fileInput.addEventListener("change", function (e) {
+                const files = this.files;
+                showThumbnail(files);
+            })
+
+            fileDiv.addEventListener("click", function (e) {
+                $(fileInput).show().focus().click().hide();
+                e.preventDefault();
+            })
+
+            fileDiv.addEventListener("dragenter", function (e) {
+                e.preventDefault();
+            });
+
+            fileDiv.addEventListener("dragover", function (e) {
+                e.preventDefault();
+            });
+
+            fileDiv.addEventListener("drop", function (e) {
+                e.preventDefault();
+
+                const files = e.dataTransfer.files;
+
+                showThumbnail(files)
+            });
+
+            function showThumbnail(files) {
+                for (file of files) {
+                    // Create a constant for image type
+                    const imageType = /image.*/
+                    // Return alert if file is not an image
+                    if (!file.type.match(imageType)) {
+                        alert("Not an Image");
+                        continue;
+                    }
+
+                    // Create element for thumbnail 
+                    const image = document.createElement("img");
+                    const thumbnail = document.getElementById("thumbnail");
+                    image.file = file;
+                    thumbnail.appendChild(image);
+
+                    // Read the file (selected image)
+                    const reader = new FileReader();
+                    reader.onload = function (aImg) {
+                        return function (e) {
+                            aImg.src = e.target.result;
+                        };
+                    }(image);
+                    reader.readAsDataURL(file);
+                    const canvas = document.createElement("canvas");
+                    ctx = canvas.getContext("2d");
+                    image.onload = function () {
+                        ctx.drawImage(image, 100, 100)
+                    }
+                }
+            }
+    </script>
+</body>
+
+</html>

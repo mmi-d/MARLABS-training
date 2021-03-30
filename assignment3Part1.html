@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid blue;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      var canvas = document.querySelector("canvas");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var c = canvas.getContext("2d");
+      //   Get a random color
+      const randcolor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      for (let i = 0; i < 100; i++) {
+        var x = Math.random() * window.innerHeight;
+        var y = Math.random() * window.innerWidth;
+        c.beginPath();
+        c.arc(x, y, 30, 0, Math.PI * 2, false);
+        c.strokeStyle = "blue";
+        c.fillStyle = randcolor;
+        c.fill();
+        c.stroke();
+      }
+    </script>
+  </body>
+</html>
