@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Range - Image Dimension</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #111;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="rate"><strong>Dimension</strong></label>
+      <input
+        type="range"
+        id="rate"
+        name="Dimension Controller"
+        min="0"
+        max="100"
+      />
+    </div>
+    <hr />
+    <img
+      id="image"
+      src="https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+      alt="Turtle-Pexel"
+    />
+
+    <script>
+      const image = document.getElementById("image"),
+        rate = document.getElementById("rate");
+
+      const height = image.height;
+      const width = image.width;
+
+      rate.onchange = function () {
+        image.width = width * (rate.value / 100);
+        image.height = height * (rate.value / 100);
+      };
+    </script>
+  </body>
+</html>
