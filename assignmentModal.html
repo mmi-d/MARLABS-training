@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <dialog id="favDialog">
+      <form method="dialog">
+        <p>
+          <label
+            >Fvaourite animal:
+            <select>
+              <option></option>
+              <option>Brine Shrimp</option>
+              <option>Red Meat</option>
+              <option>White Meat</option>
+            </select>
+          </label>
+        </p>
+        <menu>
+          <button value="cancel" id="cancel">Cancel</button>
+          <button id="confirmBtn" value="confirm">Confirm</button>
+        </menu>
+      </form>
+    </dialog>
+    <menu>
+      <button id="updateDetails">Update Details</button>
+    </menu>
+    <output></output>
+
+    <script>
+      var updateButton = document.getElementById("updateDetails");
+      var favDialog = document.getElementById("favDialog");
+      var outputBox = document.querySelector("output");
+      var selectEl = document.querySelector("select");
+      var confirmBtn = document.getElementById("confirmBtn");
+      var cancelBtn = document.getElementById("cancel");
+
+      var animalSel = "";
+      var buttonVal = "";
+
+      // "Update details" button opens the <dialog> modally
+      updateButton.addEventListener("click", function onOpen() {
+        if (typeof favDialog.showModal === "function") {
+          favDialog.showModal();
+        } else {
+          alert("The <dialog> API is not supported by this browser");
+        }
+      });
+      // "Favorite animal" input sets the value of the submit button
+      selectEl.addEventListener("click", function onSelect(e) {
+        animalSel = e.target.value;
+      });
+
+      cancelBtn.addEventListener("click", (e) => {
+        buttonVal = e.target.value;
+      });
+
+      confirmBtn.addEventListener("click", (e) => {
+        buttonVal = e.target.value;
+      });
+
+      // "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+      favDialog.addEventListener("close", function onClose(e) {
+        if (animalSel !== "") {
+          outputBox.value =
+            animalSel +
+            ", " +
+            buttonVal +
+            " button clicked - " +
+            new Date().toString();
+        } else {
+          outputBox.value =
+            buttonVal + " button clicked - " + new Date().toString();
+        }
+      });
+    </script>
+  </body>
+</html>
