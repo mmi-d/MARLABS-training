@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container1 {
+        margin: 10px;
+        display: flex;
+        width: 300px;
+        flex-flow: row wrap;
+        justify-content: center;
+        background: lightgray;
+        height: 200px;
+        width: 90%;
+      }
+      .container2 {
+        margin: 10px;
+        display: flex;
+        width: 300px;
+        flex-flow: row wrap;
+        background: lightgray;
+        justify-content: center;
+        align-content: center;
+        height: 400px;
+        width: 70%;
+      }
+      .container3 {
+        margin: 10px;
+        display: flex;
+        width: 300px;
+        flex-flow: row wrap;
+        background: lightgray;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        height: 400px;
+        width: 70%;
+      }
+      .child {
+        padding: 12px;
+        background: red;
+        border: solid 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Justification Center</h2>
+    <div class="container1">
+      <div class="child" style="height: 30px">1</div>
+      <div class="child" style="height: 50px">2</div>
+      <div class="child" style="height: 60px">3</div>
+      <div class="child" style="height: 40px">4</div>
+      <div class="child" style="height: 50px">5</div>
+      <div class="child" style="height: 20px">6</div>
+      <div class="child" style="height: 90px">7</div>
+      <div class="child" style="height: 50px">8</div>
+      <div class="child" style="height: 30px">9</div>
+      <div class="child" style="height: 40px">10</div>
+      <div class="child" style="height: 30px">11</div>
+      <div class="child" style="height: 60px">12</div>
+      <h2 style="justify-content: center">
+        Justification center works on horizontal axis regardless of the number
+        of columns
+      </h2>
+    </div>
+    <div class="container2">
+      <div class="child" style="height: 30px">1</div>
+      <div class="child" style="height: 50px">2</div>
+      <div class="child" style="height: 60px">3</div>
+      <div class="child" style="height: 40px">4</div>
+      <div class="child" style="height: 50px">5</div>
+      <div class="child" style="height: 20px">6</div>
+      <div class="child" style="height: 90px">7</div>
+      <div class="child" style="height: 50px">8</div>
+      <div class="child" style="height: 30px">9</div>
+      <div class="child" style="height: 40px">10</div>
+      <div class="child" style="height: 30px">11</div>
+      <div class="child" style="height: 60px">12</div>
+      <br />
+      <h2 style="justify-content: center">
+        Align-content works only when there are multiple lines only.
+      </h2>
+    </div>
+    <div class="container3">
+      <div class="child" style="height: 30px">1</div>
+      <div class="child" style="height: 50px">2</div>
+      <div class="child" style="height: 60px">3</div>
+      <div class="child" style="height: 40px">4</div>
+      <div class="child" style="height: 50px">5</div>
+      <div class="child" style="height: 20px">6</div>
+      <div class="child" style="height: 90px">7</div>
+      <div class="child" style="height: 50px">8</div>
+      <div class="child" style="height: 30px">9</div>
+      <div class="child" style="height: 40px">10</div>
+      <div class="child" style="height: 30px">11</div>
+      <div class="child" style="height: 60px">12</div>
+      <br />
+      <h2 style="justify-content: center">
+        Align-items work on individual items when there are multiple lines only.
+      </h2>
+    </div>
+  </body>
+</html>
